@@ -1,3 +1,3 @@
 # RSession
 
-<a href="doc/">Tutorials</a>
+<a href="doc/index.html">Tutorials</a>
