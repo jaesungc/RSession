@@ -4,6 +4,11 @@ title: "Web Scraping Examples"
 # date: "`r format(Sys.time(), '%B, %d, %Y')`"
 # framework: dzslides
 # output: ioslides_presentation
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs';
+  rmarkdown::render(input_file,
+ encoding=encoding,
+ output_file=file.path(dirname(input_file), out_dir, 'index2.html'))})
 output: html_document
 # highlight: tango
 # highlighter: highlight.js
@@ -52,8 +57,6 @@ library(dplyr)
 
 
 ## Example XML file
-
-<img class=center src=./img/03_ObtainingData/xmlexample.png height=450>
 
 [http://www.w3schools.com/xml/simple.xml](http://www.w3schools.com/xml/simple.xml)
 
