@@ -1,0 +1,155 @@
+---
+title: "Web Scraping Examples"
+# author: "Jaesung Choi"
+# date: "`r format(Sys.time(), '%B, %d, %Y')`"
+# framework: dzslides
+# output: ioslides_presentation
+output: html_document
+# highlight: tango
+# highlighter: highlight.js
+# fontsize: 10
+---
+
+
+## Library
+```
+install.packages(c("XML","RCurl","httr","rvest","stringr","dplyr")
+library(XML)
+library(rvest)
+library(stringr)
+library(dplyr)
+```
+
+
+
+## XML
+
+* Extensible markup language
+* Frequently used to store structured data
+* Particularly widely used in internet applications
+* Extracting XML is the basis for most web scraping
+
+[http://en.wikipedia.org/wiki/XML](http://en.wikipedia.org/wiki/XML)
+
+
+
+
+## Tags, elements and attributes
+
+* Tags correspond to general labels
+    + Start tags `<section>`
+    + End tags `</section>`
+    <!-- + Empty tags `<line-break />` -->
+* Elements are specific examples of tags
+    + `<Greeting> Hello, world </Greeting>`
+* Attributes are components of the label
+    + `<img src="jeff.jpg" alt="instructor"/>`
+    + `<div section="article"> Connect A to B. </div>`
+
+
+[http://en.wikipedia.org/wiki/XML](http://en.wikipedia.org/wiki/XML)
+
+
+
+## Example XML file
+
+<img class=center src=./img/03_ObtainingData/xmlexample.png height=450>
+
+[http://www.w3schools.com/xml/simple.xml](http://www.w3schools.com/xml/simple.xml)
+
+
+
+## Read source files into R
+
+```{r xmldata}
+library(XML)
+url <- "http://www.w3schools.com/xml/simple.xml"
+txt <- readLines(url)
+txt_p <- xmlTreeParse(txt,useInternal=TRUE)
+rootNode <- xmlRoot(txt_p)
+xmlName(rootNode)
+```
+
+
+
+## Directly access parts of the XML document
+
+```{r explore, dependson="xmldata"}
+rootNode[[1]]
+rootNode[[1]][[1]]
+```
+
+
+
+## XPath
+
+* _/node_ Top level node
+* _//node_ Node at any level
+* _node[@attr-name]_ Node with an attribute name
+* _node[@attr-name='strong']_ Node with attribute name attr-name='strong'
+
+Information from: [http://www.stat.berkeley.edu/~statcur/Workshop2/Presentations/XML.pdf](http://www.stat.berkeley.edu/~statcur/Workshop2/Presentations/XML.pdf)
+
+
+
+
+## Get the items on the menu and prices
+
+```{r explore4, dependson="xmldata"}
+xpathSApply(rootNode,"//name",xmlValue)
+xpathSApply(rootNode,"//price",xmlValue)
+```
+
+
+
+<br>
+<br>
+
+
+## Web Scraping
+
+__Webscraping__: Programatically extracting data from the HTML code of websites.
+
+<!-- * It can be a great way to get data [How Netflix reverse engineered Hollywood](http://www.theatlantic.com/technology/archive/2014/01/how-netflix-reverse-engineered-hollywood/282679/) -->
+* Many websites have information you may want to programaticaly read
+* In some cases this is against the terms of service for the website
+* Attempting to read too many pages too quickly can get your IP address blocked
+
+[http://en.wikipedia.org/wiki/Web_scraping](http://en.wikipedia.org/wiki/Web_scraping)
+
+
+
+## Example: Google scholar
+<!-- <img class=center src=./img/googlescholar.png height=500> -->
+Raj Chetty
+[https://scholar.google.com/citations?user=PhDDPiUAAAAJ&hl=en](https://scholar.google.com/citations?user=PhDDPiUAAAAJ&hl=en)
+
+
+
+<!-- ## Getting data off webpages - readLines() -->
+<!-- ```{r} -->
+<!-- con = url("https://scholar.google.com/citations?user=PhDDPiUAAAAJ&hl=en") -->
+<!-- htmlCode = readLines(con,warn=FALSE) -->
+<!-- close(con) -->
+<!-- ``` -->
+
+
+
+## Parsing with XML
+
+```{r xml }
+library(XML)
+url <- "https://scholar.google.com/citations?user=PhDDPiUAAAAJ&hl=en"
+txt <- readLines(url,warn=FALSE)
+txt_p <- htmlTreeParse(txt, useInternalNodes=T)
+
+xpathSApply(txt_p, "//title", xmlValue)
+xpathSApply(txt_p, "//td[@class='gsc_a_t']/a", xmlValue)[1:5]
+article.title<-xpathSApply(txt_p, "//td[@class='gsc_a_t']/a", xmlValue)
+# article.title
+
+tab<-readHTMLTable(txt_p)$gsc_a_t
+tab.df<-as.data.frame(tab,stringsAsFactors =FALSE)
+head(tab.df)
+```
+
