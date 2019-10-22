@@ -1,0 +1,17 @@
+---
+title: "Example list"
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs';
+  rmarkdown::render(input_file,
+ encoding=encoding,
+ output_file=file.path(dirname(input_file), out_dir, 'index3.html'))})
+output: html_document
+---
+
+## 불평등지수 - 지니계수 등
+
+## 고용통계
+
+## 교육통계
+
+## 인구동향 - 출산율, 사망률 등

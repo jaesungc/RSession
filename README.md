@@ -6,6 +6,8 @@
 
 <a href="docs/index2.html">Simple Example</a>
 
+<a href="docs/index3.html">Example List</a>
+
 <a href="help.html">Help Page</a>
 
 ## API
