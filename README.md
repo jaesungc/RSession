@@ -39,3 +39,14 @@ install.packages("blogdown")
 ## Automation
 
 ## Email 보내기
+
+<br>
+
+# 참고자료
+
+### <a href="https://www.youtube.com/channel/UCcYkqQNlfvEGCRpofdmVqSg/videos">R코홀릭</a>
+- rvest 라이브러리를 사용한 웹스크래핑 방법은 다양한 웹스크래핑 사례를 제공
+
+### <a href="https://r4ds.had.co.nz/">R for Data Science</a>
+- tidyverse 라이브러리를 사용해서 자료 정제 및 분석, 그래프 생성 전반에 걸친 내용을 다루는 교과서 같은 책
+
