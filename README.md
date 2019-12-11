@@ -33,15 +33,19 @@
 install.packages("usethis")
 install.packages("blogdown")
 
+## Flex Dashboard
+## Shiny Dashboard
 
 ## R Notebook
 
-## Automation
+## Automation - scheduler
 
-## Email 보내기
-
+## Email - gmailr
+## Slack - slackr
+## Telegram Bot
 <br>
-
+<br>
+<br>
 # 참고자료
 
 ### <a href="https://www.youtube.com/channel/UCcYkqQNlfvEGCRpofdmVqSg/videos">R코홀릭</a>
@@ -49,4 +53,3 @@ install.packages("blogdown")
 
 ### <a href="https://r4ds.had.co.nz/">R for Data Science</a>
 - tidyverse 라이브러리를 사용해서 자료 정제 및 분석, 그래프 생성 전반에 걸친 내용을 다루는 교과서 같은 책
-
