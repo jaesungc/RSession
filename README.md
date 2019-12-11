@@ -1,3 +1,5 @@
+Plase see this page as a blog here: https://jaesungc.github.io/RSession/
+
 ## 목차
 
 ## Web Scraping
