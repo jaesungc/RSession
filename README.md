@@ -1,4 +1,4 @@
-Plase see this page as a blog here: https://jaesungc.github.io/RSession/
+Plase see this page as a blog here: https://jaesungc.github.io/blog/
 
 ## 목차
 
