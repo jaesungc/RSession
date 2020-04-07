@@ -13,8 +13,7 @@ Plase see this page as a blog here: https://jaesungc.github.io/blog/
 - [**Introduction to Data Science**](https://rafalab.github.io/dsbook/) by *Rafael A. Irizarry*
 - [**R for Data Science**](https://r4ds.had.co.nz/) by *Hadley Wickham and Garrett Grolemund*
 
-#### [**Tidyverse**](https://www.tidyverse.org/)계열 패키지를 사용해서 R로 데이터 분석을 진행하는 강좌를 들어보고 싶으시면 Harvard 대학의 Rafael Irizarry 교수의 강의 시리즈를 추천합니다. 
-#### 개별 강좌를 하나씩 Audit으로 신청하면 모든 강의를 무료로 들을 수 있습니다. 개별 강의 리스트를 정리한 페이지를 참고하시기 바랍니다.
+#### [**Tidyverse**](https://www.tidyverse.org/)계열 패키지를 사용해서 R로 데이터 분석을 진행하는 강좌를 들어보고 싶으시면 Harvard 대학의 Rafael Irizarry 교수의 강의 시리즈를 추천합니다. 개별 강좌를 하나씩 Audit으로 신청하면 모든 강의를 무료로 들을 수 있습니다. 
 
 - [**HarvardX's Data Science**](https://sites.google.com/view/jaesung/r/harvard-r-series)
          
