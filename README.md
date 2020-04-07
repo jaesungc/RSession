@@ -7,12 +7,15 @@ Plase see this page as a blog here: https://jaesungc.github.io/blog/
 ### R을 배우고 싶은데 어떤 자료를 공부하면 좋을지 궁금하다면, 제가 정리하고 있는 자료를 참고하시기 바랍니다.
 
 - [**R References**](https://sites.google.com/view/jaesung/r/references)
-- [**HarvardX's Data Science**](https://sites.google.com/view/jaesung/r/harvard-r-series)
 
-### 사회과학이나 인전 분야 연구자로서 향후 리서치에 R을 활용하고자 한다면 다음 두 권의 책을 추천드립니다. 웹에서 무료로 볼 수 있습니다.
+### 사회과학이나 인접 분야를 공부하는 학생이나 연구자로서 향후에 R을 활용하고자 한다면 다음 두 권의 책을 추천드립니다. 웹에서 무료로 볼 수 있습니다.
 
 - [**Introduction to Data Science**](https://rafalab.github.io/dsbook/) by *Rafael A. Irizarry*
 - [**R for Data Science**](https://r4ds.had.co.nz/) by *Hadley Wickham and Garrett Grolemund*
+
+### 점점 더 폭넓게 사용되고 있는 [**Tidyverse**](https://www.tidyverse.org/)계열 패키지를 사용해서 R로 데이터 분석을 진행하는 강좌를 들어보고 싶으시면 Harvard 대학의 Rafael Irizarry 교수의 강의 시리즈를 추천합니다. 개별 강좌를 하나씩 Audit으로 신청하면 모든 강의를 무료로 들을 수 있습니다. 개별 강의 리스트를 정리한 페이지를 참고하시기 바랍니다.
+
+- [**HarvardX's Data Science**](https://sites.google.com/view/jaesung/r/harvard-r-series)
          
 
 <br>
