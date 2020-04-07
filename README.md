@@ -19,11 +19,11 @@ Plase see this page as a blog here: https://jaesungc.github.io/blog/
 
 - [**HarvardX's Data Science**](https://sites.google.com/view/jaesung/r/harvard-r-series)
          
-#### R을 어느 정도 사용해본 경험이 있으시다면 Cheat Sheet만큼 유용한 참고 자료가 있을까 싶네요.
+#### 입문 단계가 아니라 R을 어느 정도 사용한 이후에는 Cheat Sheet을 곁에 두고 참고하면 유익합니다.
 - [**RStudio Cheat Sheets**](https://rstudio.com/resources/cheatsheets/)
 - [**Cheat Sheets at Github**](https://github.com/rstudio/cheatsheets)
 
-#### 입문하는 시점에서 영어로 된 자료는 부담스럽다면 다음 두 권의 책을 참고하셔도 좋습니다.
+#### 생소한 프로그램에 입문하는 단계에서 영어로 된 자료로 공부하기 부담스럽다면 다음 두 권의 책을 참고하셔도 좋습니다.
 - [**Do it! 쉽게 배우는 R 데이터 분석 데이터 분석**](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791187370949&orderClick=LAG&Kc=) by *김영우* & [**강의용 프리젠테이션 자료** at GitHub](https://github.com/youngwoos/Doit_R/tree/master/Lecture)
 - [**R을 이용한 퀀트 투자 포트폴리오 만들기**](https://hyunyulhenry.github.io/quant_cookbook/) by *이현열* 
 
