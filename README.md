@@ -6,9 +6,8 @@ Plase see this page as a blog here: https://jaesungc.github.io/blog/
 
 ### R을 배우고 싶은데 어떤 자료를 공부하면 좋을지 궁금하다면, 제가 정리하고 있는 자료를 참고하시기 바랍니다.
 
-- <a href="https://sites.google.com/view/jaesung/r/references"> R References </a>
-
-- <a href="https://sites.google.com/view/jaesung/r/harvard-r-series"> edX Harvard R 강의 시리즈 </a>
+- [R References](https://sites.google.com/view/jaesung/r/references)
+- [edX Harvard R 강의 시리즈](https://sites.google.com/view/jaesung/r/harvard-r-series)
 
 ### 사회과학이나 인전 분야 연구자로서 향후 리서치에 R을 활용하고자 한다면 다음 두 권의 책을 추천드립니다. 웹에서 무료로 볼 수 있습니다.
 
