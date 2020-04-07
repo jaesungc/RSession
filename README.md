@@ -6,7 +6,7 @@ Plase see this page as a blog here: https://jaesungc.github.io/blog/
 
 <br>
 
-#### R을 배우고 싶은데 어떤 자료를 공부하면 좋을지 궁금하다면, 제가 정리하고 있는 자료를 참고하시기 바랍니다.
+#### R을 배우고 싶은데 어떤 자료를 공부하면 좋을지 고민이라면 제가 정리하고 있는 자료들을 살펴보시기 바랍니다.
 
 - [**R References**](https://sites.google.com/view/jaesung/r/references)
 
