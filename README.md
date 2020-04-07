@@ -1,6 +1,18 @@
 Plase see this page as a blog here: https://jaesungc.github.io/blog/
 
-## 목차
+# 블로그 소개:
+
+## 2020년 2학기에 개설할 강좌를 위해 준비 중인 페이지입니다. 아직 내용을 구성 중이라서 페이지가 구체화되지 않았습니다.
+
+## R을 배우고 싶은데 어떤 자료를 공부하면 좋을지 궁금하다면, 제가 정리하고 있는 자료를 참고하시기 바랍니다.
+
+### <a href="https://sites.google.com/view/jaesung/r/references"> R References </a>
+
+### <a href="https://sites.google.com/view/jaesung/r/harvard-r-series> edX Harvard R 강의 시리즈 </a>
+         
+
+
+## 강의 목차
 
 ## Web Scraping
 
