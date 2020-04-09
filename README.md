@@ -53,7 +53,8 @@ Plase see this page as a blog here: https://jaesungc.github.io/blog/
 
 ## Visualization 
 
-
+## Check Daily report
+[Daily report](daily_report.html)
 
 # 분석 결과 정리 및 공유하기
 
