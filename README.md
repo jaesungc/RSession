@@ -71,7 +71,7 @@ install.packages("blogdown")
 
 ## Flex Dashboard
 ### Check Daily report
-- Example 1: [Daily report](docs/daily_report.html)
+- Example 1
 
 
 ## Shiny Dashboard
