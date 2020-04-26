@@ -96,6 +96,7 @@ install.packages("blogdown")
 
 
 # 기타 유용한 Tip
-[Excel 인터넷 주소 하이퍼링크 일괄 적용과 삭제](http://blog.naver.com/PostView.nhn?blogId=kirin_grimm&logNo=220682199418)
+- [Excel 인터넷 주소 하이퍼링크 일괄 적용과 삭제](http://blog.naver.com/PostView.nhn?blogId=kirin_grimm&logNo=220682199418)
+- [윈도우10 환경변수 PATH에 폴더 추가하기](https://rootblog.tistory.com/206)
 
 
