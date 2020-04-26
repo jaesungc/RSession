@@ -95,3 +95,7 @@ install.packages("blogdown")
 - tidyverse 라이브러리를 사용해서 자료 정제 및 분석, 그래프 생성 전반에 걸친 내용을 다루는 교과서 같은 책
 
 
+# 기타 유용한 Tip
+[Excel 인터넷 주소 하이퍼링크 일괄 적용과 삭제](http://blog.naver.com/PostView.nhn?blogId=kirin_grimm&logNo=220682199418)
+
+
