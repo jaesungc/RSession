@@ -73,6 +73,15 @@ if (!!window.navigator.userAgent.match("MSIE 8")) {
 };
 </script>
 <script>!function(a,b){"use strict";function c(c,g){var h=this;h.$el=a(c),h.el=c,h.id=e++,h.$el.bind("destroyed",a.proxy(h.teardown,h)),h.$clonedHeader=null,h.$originalHeader=null,h.cachedHeaderHeight=null,h.isSticky=!1,h.hasBeenSticky=!1,h.leftOffset=null,h.topOffset=null,h.init=function(){h.setOptions(g),h.$el.each(function(){var b=a(this);b.css("padding",0),h.$originalHeader=a("thead:first",this),h.$clonedHeader=h.$originalHeader.clone(),b.trigger("clonedHeader."+d,[h.$clonedHeader]),h.$clonedHeader.addClass("tableFloatingHeader"),h.$clonedHeader.css({display:"none",opacity:0}),h.$originalHeader.addClass("tableFloatingHeaderOriginal"),h.$originalHeader.after(h.$clonedHeader),h.$printStyle=a('<style type="text/css" media="print">.tableFloatingHeader{display:none !important;}.tableFloatingHeaderOriginal{position:static !important;}</style>'),h.$head.append(h.$printStyle)}),h.updateWidth(),h.toggleHeaders(),h.bind()},h.destroy=function(){h.$el.unbind("destroyed",h.teardown),h.teardown()},h.teardown=function(){h.isSticky&&h.$originalHeader.css("position","static"),a.removeData(h.el,"plugin_"+d),h.unbind(),h.$clonedHeader.remove(),h.$originalHeader.removeClass("tableFloatingHeaderOriginal"),h.$originalHeader.css("visibility","visible"),h.$printStyle.remove(),h.el=null,h.$el=null},h.bind=function(){h.$scrollableArea.on("scroll."+d,h.toggleHeaders),h.isWindowScrolling||(h.$window.on("scroll."+d+h.id,h.setPositionValues),h.$window.on("resize."+d+h.id,h.toggleHeaders)),h.$scrollableArea.on("resize."+d,h.toggleHeaders),h.$scrollableArea.on("resize."+d,h.updateWidth)},h.unbind=function(){h.$scrollableArea.off("."+d,h.toggleHeaders),h.isWindowScrolling||(h.$window.off("."+d+h.id,h.setPositionValues),h.$window.off("."+d+h.id,h.toggleHeaders)),h.$scrollableArea.off("."+d,h.updateWidth)},h.debounce=function(a,b){var c=null;return function(){var d=this,e=arguments;clearTimeout(c),c=setTimeout(function(){a.apply(d,e)},b)}},h.toggleHeaders=h.debounce(function(){h.$el&&h.$el.each(function(){var b,c=a(this),e=h.isWindowScrolling?isNaN(h.options.fixedOffset)?h.options.fixedOffset.outerHeight():h.options.fixedOffset:h.$scrollableArea.offset().top+(isNaN(h.options.fixedOffset)?0:h.options.fixedOffset),f=c.offset(),g=h.$scrollableArea.scrollTop()+e,i=h.$scrollableArea.scrollLeft(),j=h.options.cacheHeaderHeight?h.cachedHeaderHeight:h.$clonedHeader.height(),k=h.isWindowScrolling?g>f.top:e>f.top,l=(h.isWindowScrolling?g:0)<f.top+c.height()-j-(h.isWindowScrolling?0:e);k&&l?(b=f.left-i+h.options.leftOffset,h.$originalHeader.css({position:"fixed","margin-top":h.options.marginTop,left:b,"z-index":3}),h.leftOffset=b,h.topOffset=e,h.$clonedHeader.css("display",""),h.isSticky||(h.isSticky=!0,h.updateWidth(),c.trigger("enabledStickiness."+d)),h.setPositionValues()):h.isSticky&&(h.$originalHeader.css("position","static"),h.$clonedHeader.css("display","none"),h.isSticky=!1,h.resetWidth(a("td,th",h.$clonedHeader),a("td,th",h.$originalHeader)),c.trigger("disabledStickiness."+d))})},0),h.setPositionValues=h.debounce(function(){var a=h.$window.scrollTop(),b=h.$window.scrollLeft();!h.isSticky||0>a||a+h.$window.height()>h.$document.height()||0>b||b+h.$window.width()>h.$document.width()||h.$originalHeader.css({top:h.topOffset-(h.isWindowScrolling?0:a),left:h.leftOffset-(h.isWindowScrolling?0:b)})},0),h.updateWidth=h.debounce(function(){if(h.isSticky){h.$originalHeaderCells||(h.$originalHeaderCells=a("th,td",h.$originalHeader)),h.$clonedHeaderCells||(h.$clonedHeaderCells=a("th,td",h.$clonedHeader));var b=h.getWidth(h.$clonedHeaderCells);h.setWidth(b,h.$clonedHeaderCells,h.$originalHeaderCells),h.$originalHeader.css("width",h.$clonedHeader.width()),h.options.cacheHeaderHeight&&(h.cachedHeaderHeight=h.$clonedHeader.height())}},0),h.getWidth=function(c){var d=[];return c.each(function(c){var e,f=a(this);if("border-box"===f.css("box-sizing")){var g=f[0].getBoundingClientRect();e=g.width?g.width:g.right-g.left}else{var i=a("th",h.$originalHeader);if("collapse"===i.css("border-collapse"))if(b.getComputedStyle)e=parseFloat(b.getComputedStyle(this,null).width);else{var j=parseFloat(f.css("padding-left")),k=parseFloat(f.css("padding-right")),l=parseFloat(f.css("border-width"));e=f.outerWidth()-j-k-l}else e=f.width()}d[c]=e}),d},h.setWidth=function(a,b,c){b.each(function(b){var d=a[b];c.eq(b).css({"min-width":d,"max-width":d})})},h.resetWidth=function(b,c){b.each(function(b){var d=a(this);c.eq(b).css({"min-width":d.css("min-width"),"max-width":d.css("max-width")})})},h.setOptions=function(b){h.options=a.extend({},f,b),h.$window=a(h.options.objWindow),h.$head=a(h.options.objHead),h.$document=a(h.options.objDocument),h.$scrollableArea=a(h.options.scrollableArea),h.isWindowScrolling=h.$scrollableArea[0]===h.$window[0]},h.updateOptions=function(a){h.setOptions(a),h.unbind(),h.bind(),h.updateWidth(),h.toggleHeaders()},h.init()}var d="stickyTableHeaders",e=0,f={fixedOffset:0,leftOffset:0,marginTop:0,objDocument:document,objHead:"head",objWindow:b,scrollableArea:b,cacheHeaderHeight:!1};a.fn[d]=function(b){return this.each(function(){var e=a.data(this,"plugin_"+d);e?"string"==typeof b?e[b].apply(e):e.updateOptions(b):"destroy"!==b&&a.data(this,"plugin_"+d,new c(this,b))})}}(jQuery,window);</script>
+<script>$(document).ready(function(){
+    if (typeof $('[data-toggle="tooltip"]').tooltip === 'function') {
+        $('[data-toggle="tooltip"]').tooltip();
+    }
+    if ($('[data-toggle="popover"]').popover === 'function') {
+        $('[data-toggle="popover"]').popover();
+    }
+});
+</script>
 <style type="text/css">
 
 /*
@@ -2635,39 +2644,63 @@ window.FlexDashboardComponents.push({
 <h1>1. Daily Update</h1>
 <div id="column" class="section level2" data-width="500">
 <h2 data-width="500">Column</h2>
-<div id="chart-a1-issued-at-2020-05-07-162135" class="section level3">
-<h3>Chart A1 (<strong>Issued at 2020-05-07 16:21:35</strong>)</h3>
+<div id="chart-a1-issued-at-2020-05-07-163331" class="section level3">
+<h3>Chart A1 (<strong>Issued at 2020-05-07 16:33:31</strong>)</h3>
 <p><a href="https://blog.naver.com/PostList.nhn?blogId=ldhwc"><strong>시황맨의 주식 이야기 블로그</strong></a></p>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<table>
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
 <thead>
-<tr class="header">
-<th align="left">Date</th>
-<th align="center">Title</th>
+<tr>
+<th style="text-align:left;">
+Date
+</th>
+<th style="text-align:left;">
+Title
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">5시간 전</td>
-<td align="center"><a href="https://blog.naver.com/ldhwc/221950806887">이번주 투자 주체별 매수 상위 종목</a></td>
+<tr>
+<td style="text-align:left;">
+5시간 전
+</td>
+<td style="text-align:left;">
+<a href="https://blog.naver.com/ldhwc/221950806887">이번주 투자 주체별 매수 상위 종목</a>
+</td>
 </tr>
-<tr class="even">
-<td align="left">7시간 전</td>
-<td align="center"><a href="https://blog.naver.com/ldhwc/221950888962">신규실업수당 청구 317만건</a></td>
+<tr>
+<td style="text-align:left;">
+7시간 전
+</td>
+<td style="text-align:left;">
+<a href="https://blog.naver.com/ldhwc/221950888962">신규실업수당 청구 317만건</a>
+</td>
 </tr>
-<tr class="odd">
-<td align="left">8시간 전</td>
-<td align="center"><a href="https://blog.naver.com/ldhwc/221950852440">미 증시 개장 전 주요 이슈 - 국제유가. 백신, 미중 무역갈등</a></td>
+<tr>
+<td style="text-align:left;">
+8시간 전
+</td>
+<td style="text-align:left;">
+<a href="https://blog.naver.com/ldhwc/221950852440">미 증시 개장 전 주요 이슈 - 국제유가. 백신, 미중 무역갈등</a>
+</td>
 </tr>
-<tr class="even">
-<td align="left">11시간 전</td>
-<td align="center"><a href="https://blog.naver.com/ldhwc/221950356299">차트로 보는 오늘의 시황</a></td>
+<tr>
+<td style="text-align:left;">
+11시간 전
+</td>
+<td style="text-align:left;">
+<a href="https://blog.naver.com/ldhwc/221950356299">차트로 보는 오늘의 시황</a>
+</td>
 </tr>
-<tr class="odd">
-<td align="left">14시간 전</td>
-<td align="center"><a href="https://blog.naver.com/ldhwc/221950307198">마감 시황 - 한국판 뉴딜 정책 효과로 연중 하락폭 지워버린 코스닥</a></td>
+<tr>
+<td style="text-align:left;">
+14시간 전
+</td>
+<td style="text-align:left;">
+<a href="https://blog.naver.com/ldhwc/221950307198">마감 시황 - 한국판 뉴딜 정책 효과로 연중 하락폭 지워버린 코스닥</a>
+</td>
 </tr>
 </tbody>
 </table>
@@ -2680,37 +2713,65 @@ window.FlexDashboardComponents.push({
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<table>
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
 <thead>
-<tr class="header">
-<th align="left">Date</th>
-<th align="center">Title</th>
+<tr>
+<th style="text-align:left;">
+Date
+</th>
+<th style="text-align:left;">
+Title
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">16시간 전</td>
-<td align="center"><a href="https://blog.naver.com/pokara61/221950126457">더블유게임즈 – 방콕엔 카지노가 제격?</a></td>
+<tr>
+<td style="text-align:left;">
+16시간전
+</td>
+<td style="text-align:left;">
+<a href="https://blog.naver.com/pokara61/221950126457">더블유게임즈 – 방콕엔 카지노가 제격?</a>
+</td>
 </tr>
-<tr class="even">
-<td align="left">18시간 전</td>
-<td align="center"><a href="https://blog.naver.com/pokara61/221949960092"><경제> 한국판 뉴딜 3대 사업 – 비대면· 디지털· SOC 분야</a></td>
+<tr>
+<td style="text-align:left;">
+18시간전
+</td>
+<td style="text-align:left;">
+<a href="https://blog.naver.com/pokara61/221949960092">&lt;경제&gt; 한국판 뉴딜 3대 사업 – 비대면· 디지털· SOC 분야</a>
+</td>
 </tr>
-<tr class="odd">
-<td align="left">21시간 전</td>
-<td align="center"><a href="https://blog.naver.com/pokara61/221949752443">구충제 코로나 치료효과 – 파스퇴르硏, 국제학술지 발표</a></td>
+<tr>
+<td style="text-align:left;">
+21시간전
+</td>
+<td style="text-align:left;">
+<a href="https://blog.naver.com/pokara61/221949752443">구충제 코로나 치료효과 – 파스퇴르硏, 국제학술지 발표</a>
+</td>
 </tr>
-<tr class="even">
-<td align="left">2020. 5. 6.</td>
-<td align="center"><a href="https://blog.naver.com/pokara61/221948651160"><시장>이재용 사과, 삼성그룹주 상승추세 마감</a></td>
+<tr>
+<td style="text-align:left;">
+2020.5.6.
+</td>
+<td style="text-align:left;">
+<a href="https://blog.naver.com/pokara61/221948651160">&lt;시장&gt;이재용 사과, 삼성그룹주 상승추세 마감</a>
+</td>
 </tr>
-<tr class="odd">
-<td align="left">2020. 5. 6.</td>
-<td align="center"><a href="https://blog.naver.com/pokara61/221948222956">인선이엔티 – 창사이래 최고 실적</a></td>
+<tr>
+<td style="text-align:left;">
+2020.5.6.
+</td>
+<td style="text-align:left;">
+<a href="https://blog.naver.com/pokara61/221948222956">인선이엔티 – 창사이래 최고 실적</a>
+</td>
 </tr>
-<tr class="even">
-<td align="left">2020. 5. 6.</td>
-<td align="center"><a href="https://blog.naver.com/pokara61/221947995090"><뉴욕증시> 봉쇄완화 및 화이자 백신 임상 착수</a></td>
+<tr>
+<td style="text-align:left;">
+2020.5.6.
+</td>
+<td style="text-align:left;">
+<a href="https://blog.naver.com/pokara61/221947995090">&lt;뉴욕증시&gt; 봉쇄완화 및 화이자 백신 임상 착수</a>
+</td>
 </tr>
 </tbody>
 </table>
@@ -2721,37 +2782,65 @@ window.FlexDashboardComponents.push({
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<table>
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
 <thead>
-<tr class="header">
-<th align="left">Date</th>
-<th align="center">Title</th>
+<tr>
+<th style="text-align:left;">
+Date
+</th>
+<th style="text-align:left;">
+Title
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">9시간 전</td>
-<td align="center"><a href="https://blog.naver.com/nuxlo/221950718272">엠씨넥스, 오이솔루션은 우리에게 좋은 투자 아이디어를 제공해줬다</a></td>
+<tr>
+<td style="text-align:left;">
+9시간전
+</td>
+<td style="text-align:left;">
+<a href="https://blog.naver.com/nuxlo/221950718272">엠씨넥스, 오이솔루션은 우리에게 좋은 투자 아이디어를 제공해줬다</a>
+</td>
 </tr>
-<tr class="even">
-<td align="left">19시간 전</td>
-<td align="center"><a href="https://blog.naver.com/nuxlo/221949839904">주식이 매일 오르면 물론 기분이 좋습니다.</a></td>
+<tr>
+<td style="text-align:left;">
+19시간전
+</td>
+<td style="text-align:left;">
+<a href="https://blog.naver.com/nuxlo/221949839904">주식이 매일 오르면 물론 기분이 좋습니다.</a>
+</td>
 </tr>
-<tr class="odd">
-<td align="left">2020. 5. 5.</td>
-<td align="center"><a href="https://blog.naver.com/nuxlo/221947224423">함께 우리의 밝은 미래를 계획하다</a></td>
+<tr>
+<td style="text-align:left;">
+2020.5.5.
+</td>
+<td style="text-align:left;">
+<a href="https://blog.naver.com/nuxlo/221947224423">함께 우리의 밝은 미래를 계획하다</a>
+</td>
 </tr>
-<tr class="even">
-<td align="left">2020. 5. 4.</td>
-<td align="center"><a href="https://blog.naver.com/nuxlo/221945234512">성공하기 위해선 인내심을 갖어야 합니다.</a></td>
+<tr>
+<td style="text-align:left;">
+2020.5.4.
+</td>
+<td style="text-align:left;">
+<a href="https://blog.naver.com/nuxlo/221945234512">성공하기 위해선 인내심을 갖어야 합니다.</a>
+</td>
 </tr>
-<tr class="odd">
-<td align="left">2020. 5. 3.</td>
-<td align="center"><a href="https://blog.naver.com/nuxlo/221943484166">저의 가치투자는 이렇습니다.</a></td>
+<tr>
+<td style="text-align:left;">
+2020.5.3.
+</td>
+<td style="text-align:left;">
+<a href="https://blog.naver.com/nuxlo/221943484166">저의 가치투자는 이렇습니다.</a>
+</td>
 </tr>
-<tr class="even">
-<td align="left">2020. 5. 2.</td>
-<td align="center"><a href="https://blog.naver.com/nuxlo/221941796225">원유, 유가 ETN 투자는 삼성전자 상승율 탓 ?</a></td>
+<tr>
+<td style="text-align:left;">
+2020.5.2.
+</td>
+<td style="text-align:left;">
+<a href="https://blog.naver.com/nuxlo/221941796225">원유, 유가 ETN 투자는 삼성전자 상승율 탓 ?</a>
+</td>
 </tr>
 </tbody>
 </table>
@@ -2762,33 +2851,65 @@ window.FlexDashboardComponents.push({
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<table>
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
 <thead>
-<tr class="header">
-<th align="left">Date</th>
-<th align="center">Title</th>
+<tr>
+<th style="text-align:left;">
+Date
+</th>
+<th style="text-align:left;">
+Title
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">21분 전</td>
-<td align="center"><a href="https://www.dailian.co.kr/news/view/888545?sc=Naver">포스트 코로나에 주목받는 ‘비대면’…IPO 기대주 등극</a></td>
+<tr>
+<td style="text-align:left;">
+33분 전
+</td>
+<td style="text-align:left;">
+<a href="https://www.dailian.co.kr/news/view/888545?sc=Naver">포스트 코로나에 주목받는 ‘비대면’…IPO 기대주 등극</a>
+</td>
 </tr>
-<tr class="even">
-<td align="left">13시간 전</td>
-<td align="center"><a href="http://news.bizwatch.co.kr/article/market/2020/05/06/0029/naver">수급 꼬인 CB 시장…기업·주주들 ‘속 탄다’</a></td>
+<tr>
+<td style="text-align:left;">
+13시간 전
+</td>
+<td style="text-align:left;">
+<a href="http://news.bizwatch.co.kr/article/market/2020/05/06/0029/naver">수급 꼬인 CB 시장…기업·주주들 ‘속 탄다’</a>
+</td>
 </tr>
-<tr class="odd">
-<td align="left">1일 전</td>
-<td align="center"><a href="http://www.businesspost.co.kr/BP?command=article_view&amp;num=176808">스맥 로보티즈, 로봇 보급 지원정책에 실적 늘릴 기회잡아</a></td>
+<tr>
+<td style="text-align:left;">
+1일 전
+</td>
+<td style="text-align:left;">
+<a href="http://www.businesspost.co.kr/BP?command=article_view&amp;num=176808">스맥 로보티즈, 로봇 보급 지원정책에 실적 늘릴 기회잡아</a>
+</td>
 </tr>
-<tr class="even">
-<td align="left">1일 전</td>
-<td align="center"><a href="http://news.mt.co.kr/mtview.php?no=2020050615330759890">5월에도 상장 노크 줄 이을까, IPO에서도 주목받는 ‘언택트’</a></td>
+<tr>
+<td style="text-align:left;">
+1일 전
+</td>
+<td style="text-align:left;">
+<a href="http://news.mt.co.kr/mtview.php?no=2020050615330759890">5월에도 상장 노크 줄 이을까, IPO에서도 주목받는 ‘언택트’</a>
+</td>
 </tr>
-<tr class="odd">
-<td align="left">1일 전</td>
-<td align="center"><a href="http://www.metroseoul.co.kr/article/20200506500380">IPO 재개됐지만…“대어급 부재 우려”</a></td>
+<tr>
+<td style="text-align:left;">
+1일 전
+</td>
+<td style="text-align:left;">
+<a href="http://www.metroseoul.co.kr/article/20200506500380">IPO 재개됐지만…“대어급 부재 우려”</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1일 전
+</td>
+<td style="text-align:left;">
+<a href="http://www.naeil.com/news_view/?id_art=348535">비대면 업체 IPO 증가 예상</a>
+</td>
 </tr>
 </tbody>
 </table>
@@ -2802,33 +2923,57 @@ window.FlexDashboardComponents.push({
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<table>
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
 <thead>
-<tr class="header">
-<th align="left">Date</th>
-<th align="center">Title</th>
+<tr>
+<th style="text-align:left;">
+Date
+</th>
+<th style="text-align:left;">
+Title
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">1일 전</td>
-<td align="center"><a href="http://www.etoday.co.kr/news/section/newsview.php?idxno=1891197">[상장사 재무분석] 대교, 리스부채 반영에 이자보상배율 한자릿수로</a></td>
+<tr>
+<td style="text-align:left;">
+1일 전
+</td>
+<td style="text-align:left;">
+<a href="http://www.etoday.co.kr/news/section/newsview.php?idxno=1891197">[상장사 재무분석] 대교, 리스부채 반영에 이자보상배율 한자릿수로</a>
+</td>
 </tr>
-<tr class="even">
-<td align="left">7일 전</td>
-<td align="center"><a href="http://news.mt.co.kr/mtview.php?no=2020042916165882884">마스크→진단키트→치료제→?…벌써 주가 2배 ‘껑충’</a></td>
+<tr>
+<td style="text-align:left;">
+7일 전
+</td>
+<td style="text-align:left;">
+<a href="http://news.mt.co.kr/mtview.php?no=2020042916165882884">마스크→진단키트→치료제→?…벌써 주가 2배 ‘껑충’</a>
+</td>
 </tr>
-<tr class="odd">
-<td align="left">2020.04.29.</td>
-<td align="center"><a href="http://www.newspim.com/news/view/20200429001235">[리포트 브리핑]대교, ‘하반기 회복 전망’ 목표가 4,800원 - 이베스트투자증권</a></td>
+<tr>
+<td style="text-align:left;">
+2020.04.29.
+</td>
+<td style="text-align:left;">
+<a href="http://www.newspim.com/news/view/20200429001235">[리포트 브리핑]대교, ‘하반기 회복 전망’ 목표가 4,800원 - 이베스트투자증권</a>
+</td>
 </tr>
-<tr class="even">
-<td align="left">2020.04.29.</td>
-<td align="center"><a href="http://news.mt.co.kr/mtview.php?no=2020042911282242635">마스크→진단키트→치료제 다음 주자는?…벌써 주가 2배 ‘껑충’</a></td>
+<tr>
+<td style="text-align:left;">
+2020.04.29.
+</td>
+<td style="text-align:left;">
+<a href="http://news.mt.co.kr/mtview.php?no=2020042911282242635">마스크→진단키트→치료제 다음 주자는?…벌써 주가 2배 ‘껑충’</a>
+</td>
 </tr>
-<tr class="odd">
-<td align="left">2020.04.27.</td>
-<td align="center"><a href="http://www.thevaluenews.co.kr/news/view.php?idx=159319">코로나19 ‘보복소비’ 수혜 결제주 나이스정보통신 ‘희색’</a></td>
+<tr>
+<td style="text-align:left;">
+2020.04.27.
+</td>
+<td style="text-align:left;">
+<a href="http://www.thevaluenews.co.kr/news/view.php?idx=159319">코로나19 ‘보복소비’ 수혜 결제주 나이스정보통신 ‘희색’</a>
+</td>
 </tr>
 </tbody>
 </table>
@@ -2839,33 +2984,57 @@ window.FlexDashboardComponents.push({
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<table>
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
 <thead>
-<tr class="header">
-<th align="left">Date</th>
-<th align="center">Title</th>
+<tr>
+<th style="text-align:left;">
+Date
+</th>
+<th style="text-align:left;">
+Title
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">20시간 전</td>
-<td align="center"><a href="https://www.hankyung.com/international/article/202005071687i">공매도에 물린 월가, 그래도 공매도하는 이유</a></td>
+<tr>
+<td style="text-align:left;">
+21시간 전
+</td>
+<td style="text-align:left;">
+<a href="https://www.hankyung.com/international/article/202005071687i">공매도에 물린 월가, 그래도 공매도하는 이유</a>
+</td>
 </tr>
-<tr class="even">
-<td align="left">1일 전</td>
-<td align="center"><a href="https://www.hankyung.com/economy/article/202005067085i">“미 경기 W자, L자 되면 뉴욕 증시 타격입을 것”</a></td>
+<tr>
+<td style="text-align:left;">
+1일 전
+</td>
+<td style="text-align:left;">
+<a href="https://www.hankyung.com/economy/article/202005067085i">“미 경기 W자, L자 되면 뉴욕 증시 타격입을 것”</a>
+</td>
 </tr>
-<tr class="odd">
-<td align="left">2일 전</td>
-<td align="center"><a href="https://www.hankyung.com/finance/article/202005055385i">워런 버핏을 누른 Fed의 위엄</a></td>
+<tr>
+<td style="text-align:left;">
+2일 전
+</td>
+<td style="text-align:left;">
+<a href="https://www.hankyung.com/finance/article/202005055385i">워런 버핏을 누른 Fed의 위엄</a>
+</td>
 </tr>
-<tr class="even">
-<td align="left">3일 전</td>
-<td align="center"><a href="https://www.hankyung.com/international/article/202005041722i">코로나19發 경기 침체+관세전쟁=대공황?</a></td>
+<tr>
+<td style="text-align:left;">
+3일 전
+</td>
+<td style="text-align:left;">
+<a href="https://www.hankyung.com/international/article/202005041722i">코로나19發 경기 침체+관세전쟁=대공황?</a>
+</td>
 </tr>
-<tr class="odd">
-<td align="left">6일 전</td>
-<td align="center"><a href="https://www.hankyung.com/international/article/202005017097i">‘월가가 가장 미워한 랠리’</a></td>
+<tr>
+<td style="text-align:left;">
+6일 전
+</td>
+<td style="text-align:left;">
+<a href="https://www.hankyung.com/international/article/202005017097i">‘월가가 가장 미워한 랠리’</a>
+</td>
 </tr>
 </tbody>
 </table>
@@ -2876,33 +3045,57 @@ window.FlexDashboardComponents.push({
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<table>
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
 <thead>
-<tr class="header">
-<th align="left">Date</th>
-<th align="center">Title</th>
+<tr>
+<th style="text-align:left;">
+Date
+</th>
+<th style="text-align:left;">
+Title
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">2020.05.07.</td>
-<td align="center"><a href="https://cafe.naver.com/pointns/74938">삼성전자에 20년간 장기투자하면 연평균수익률은?</a></td>
+<tr>
+<td style="text-align:left;">
+2020.05.07.
+</td>
+<td style="text-align:left;">
+<a href="https://cafe.naver.com/pointns/74938">삼성전자에 20년간 장기투자하면 연평균수익률은?</a>
+</td>
 </tr>
-<tr class="even">
-<td align="left">2020.05.06.</td>
-<td align="center"><a href="https://cafe.naver.com/pointns/74752">슈퍼파워 한국증시, 현재 상승은 즐기되 취하면 안되는이유</a></td>
+<tr>
+<td style="text-align:left;">
+2020.05.06.
+</td>
+<td style="text-align:left;">
+<a href="https://cafe.naver.com/pointns/74752">슈퍼파워 한국증시, 현재 상승은 즐기되 취하면 안되는이유</a>
+</td>
 </tr>
-<tr class="odd">
-<td align="left">2020.05.05.</td>
-<td align="center"><a href="https://cafe.naver.com/pointns/73989">삼성,5G 투자중이시라면 필수시청! 5월에는 팔아라?</a></td>
+<tr>
+<td style="text-align:left;">
+2020.05.05.
+</td>
+<td style="text-align:left;">
+<a href="https://cafe.naver.com/pointns/73989">삼성,5G 투자중이시라면 필수시청! 5월에는 팔아라?</a>
+</td>
 </tr>
-<tr class="even">
-<td align="left">2020.05.04.</td>
-<td align="center"><a href="https://cafe.naver.com/pointns/73653">외인 1조원 순매도. 먹구름끼는 이번주 증시방향은??</a></td>
+<tr>
+<td style="text-align:left;">
+2020.05.04.
+</td>
+<td style="text-align:left;">
+<a href="https://cafe.naver.com/pointns/73653">외인 1조원 순매도. 먹구름끼는 이번주 증시방향은??</a>
+</td>
 </tr>
-<tr class="odd">
-<td align="left">2020.05.03.</td>
-<td align="center"><a href="https://cafe.naver.com/pointns/73066">워렌버핏은 왜 주식을 안사고있을까? 항공주 전량손절.</a></td>
+<tr>
+<td style="text-align:left;">
+2020.05.03.
+</td>
+<td style="text-align:left;">
+<a href="https://cafe.naver.com/pointns/73066">워렌버핏은 왜 주식을 안사고있을까? 항공주 전량손절.</a>
+</td>
 </tr>
 </tbody>
 </table>
@@ -2913,33 +3106,57 @@ window.FlexDashboardComponents.push({
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<table>
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
 <thead>
-<tr class="header">
-<th align="left">Date</th>
-<th align="center">Title</th>
+<tr>
+<th style="text-align:left;">
+Date
+</th>
+<th style="text-align:left;">
+Title
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">2020.05.07.</td>
-<td align="center"><a href="https://cafe.naver.com/stockstudy114/23054">[ 5월 7일 장전 브리핑 ] 우선 병원에 다녀 오겠습니다 ^^;;</a></td>
+<tr>
+<td style="text-align:left;">
+2020.05.07.
+</td>
+<td style="text-align:left;">
+<a href="https://cafe.naver.com/stockstudy114/23054">[ 5월 7일 장전 브리핑 ] 우선 병원에 다녀 오겠습니다 ^^;;</a>
+</td>
 </tr>
-<tr class="even">
-<td align="left">2020.05.06.</td>
-<td align="center"><a href="https://cafe.naver.com/stockstudy114/23001">[ 5월 6일 장전 브리핑 ] 위험한 고비는 넘긴 듯 합니다만 ~~~ !!</a></td>
+<tr>
+<td style="text-align:left;">
+2020.05.06.
+</td>
+<td style="text-align:left;">
+<a href="https://cafe.naver.com/stockstudy114/23001">[ 5월 6일 장전 브리핑 ] 위험한 고비는 넘긴 듯 합니다만 ~~~ !!</a>
+</td>
 </tr>
-<tr class="odd">
-<td align="left">2020.05.04.</td>
-<td align="center"><a href="https://cafe.naver.com/stockstudy114/22892">[ 5월 4일 장전 브리핑 ] 여유롭게 하루를 지켜 봅니다 !!</a></td>
+<tr>
+<td style="text-align:left;">
+2020.05.04.
+</td>
+<td style="text-align:left;">
+<a href="https://cafe.naver.com/stockstudy114/22892">[ 5월 4일 장전 브리핑 ] 여유롭게 하루를 지켜 봅니다 !!</a>
+</td>
 </tr>
-<tr class="even">
-<td align="left">2020.04.29.</td>
-<td align="center"><a href="https://cafe.naver.com/stockstudy114/22669">[ 4월 29일 장전 브리핑 ] 연휴를 앞둔 주스모의 매매 포지션 ~ !</a></td>
+<tr>
+<td style="text-align:left;">
+2020.04.29.
+</td>
+<td style="text-align:left;">
+<a href="https://cafe.naver.com/stockstudy114/22669">[ 4월 29일 장전 브리핑 ] 연휴를 앞둔 주스모의 매매 포지션 ~ !</a>
+</td>
 </tr>
-<tr class="odd">
-<td align="left">2020.04.28.</td>
-<td align="center"><a href="https://cafe.naver.com/stockstudy114/22601">[ 4월 28일 장전 브리핑 ] 연이은 미국 시장의 상승 / 우리 시장은? ^^</a></td>
+<tr>
+<td style="text-align:left;">
+2020.04.28.
+</td>
+<td style="text-align:left;">
+<a href="https://cafe.naver.com/stockstudy114/22601">[ 4월 28일 장전 브리핑 ] 연이은 미국 시장의 상승 / 우리 시장은? ^^</a>
+</td>
 </tr>
 </tbody>
 </table>
@@ -2950,8 +3167,8 @@ window.FlexDashboardComponents.push({
 <h1>2. HK Concensus (1)</h1>
 <div id="column-2" class="section level2" data-width="500">
 <h2 data-width="500">Column</h2>
-<div id="chart-a1-issued-at-2020-05-07-162135-1" class="section level3">
-<h3>Chart A1 (<strong>Issued at 2020-05-07 16:21:35</strong>)</h3>
+<div id="chart-a1-issued-at-2020-05-07-163331-1" class="section level3">
+<h3>Chart A1 (<strong>Issued at 2020-05-07 16:33:31</strong>)</h3>
 <p><a href="http://hkconsensus.hankyung.com/apps.analysis/analysis.list?sdate=2020-01-01&amp;edate=2020-12-31&amp;now_page=1&amp;search_value=&amp;report_type=CO&amp;pagenum=20&amp;search_text=%C1%A4%C8%AB%BD%C4&amp;business_code=">정홍식 애널리스트 최근 보고서</a></p>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
@@ -3793,8 +4010,8 @@ window.FlexDashboardComponents.push({
 <h1>3. Podcast</h1>
 <div id="column-6" class="section level2" data-width="500">
 <h2 data-width="500">Column</h2>
-<div id="chart-a1-issued-at-2020-05-07-162135-2" class="section level3">
-<h3>Chart A1 (<strong>Issued at 2020-05-07 16:21:35</strong>)</h3>
+<div id="chart-a1-issued-at-2020-05-07-163331-2" class="section level3">
+<h3>Chart A1 (<strong>Issued at 2020-05-07 16:33:31</strong>)</h3>
 <p><a href="http://www.podbbang.com/ch/12976">이베스트 투자증권 이리온</a> &amp; <a href="https://www.youtube.com/channel/UCauZxKRDiGcrWplWUOIN9JQ/featured">Youtube 이리온 스튜디오</a></p>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
